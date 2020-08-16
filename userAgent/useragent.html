@@ -1,0 +1,65 @@
+<html>
+<link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/design-system/2.12.1/styles/salesforce-lightning-design-system.min.css">
+<div class="slds-box">
+    Complete Return URL from SFDC </br>
+    <p id="completeURL"></p>
+</div>
+
+<div class="slds-box">
+    Access Token
+    <p id="url"></p>
+</div>
+<div class="slds-align_absolute-center">
+    <div slds-m-around_medium style=" padding:0.5rem;margin-top:10px;">
+        <button class="slds-button slds-button_success" onclick="getRecords()">Get Records(GET Request)</button>
+    </div>
+    <br/>
+   
+</div>
+<div class="slds-align_absolute-center">
+<p>**************** Salesforce Reocrds. ****************</p>
+<br/>
+<br/>
+</div>
+<p id="data"></p>
+<script>
+    if (location.hash) {
+
+        // alert(location.hash.substr(1));
+        let params = location.hash.substr(1).split('&');
+        let resObj = {};
+        params.forEach(function (param) {
+            var splitter = param.split('=');
+            resObj[splitter[0]] = splitter[1];
+        });
+        document.getElementById("url").innerHTML = resObj.access_token;
+        document.getElementById("completeURL").innerHTML = JSON.stringify(resObj);
+    }
+    //STEP 3 : Fetch the records from salesforce.
+    function getRecords() {
+        let params = location.hash.substr(1).split('&');
+        let resObj = {};
+        params.forEach(function (param) {
+            var splitter = param.split('=');
+            resObj[splitter[0]] = splitter[1];
+        });
+        document.getElementById("url").innerHTML = resObj.access_token;
+        document.getElementById("completeURL").innerHTML = JSON.stringify(resObj);
+      //  alert(decodeURIComponent(resObj.access_token));
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            let response=this.responseText;
+            let resObj=JSON.parse(response);
+            document.getElementById("data").innerHTML = JSON.stringify(resObj.records);
+
+        };
+        xhttp.open("GET", "https://nikhead-dev-ed.my.salesforce.com/services/data/v48.0/query/?q=SELECT+name+from+Account", true);
+        xhttp.setRequestHeader("Content-Type", "application/json");
+        xhttp.setRequestHeader("Access-Control-Allow-Origin", "*");
+        xhttp.setRequestHeader("Authorization", "Bearer " + decodeURIComponent(resObj.access_token));
+        xhttp.send();
+    }
+</script>
+
+</html>

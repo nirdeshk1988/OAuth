@@ -1,0 +1,28 @@
+<html>
+<link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/design-system/2.12.1/styles/salesforce-lightning-design-system.min.css">
+<div class="slds-align_absolute-center">
+      <div slds-m-around_medium>
+        <div class="demo-only " style=" padding:0.5rem;background:#16325c;margin-top:250px;">
+            <div class="slds-text-color_inverse" style="font-size: 25px;">Uer Agent Flow : Demo </div>
+        </div>
+        <div class="demo-only" style="padding:0.5rem;background:#16325c">
+            <button class="slds-button slds-button_success" onclick="startFlow()">Login to salesforce.</button>
+        </div>
+    </div>
+</div>
+<div style="word-wrap:break-word;padding:1rem">
+    <p class="slds-align_absolute-center"><b>After clicking on button,will redirect the user to below URL which will open the salesforce login 
+        page for authentication.
+    </b>
+    </p>
+</br>
+  <p> https://login.salesforce.com/services/oauth2/authorize?client_id=3MVG9d8..z.hDcPLBHHerB_N8Hes3cC5lUR23OAHJ2VY2OVJxTYif12LpAVeiTPuzazZmvNUn0oJBMS1XfQ.b&redirect_uri=http://localhost:3002/callbackurl&response_type=token&prompt=login%20consent
+</p>
+</div>
+<script>
+    function startFlow() {
+      window.location='startFlow';
+    }
+    </script>
+</html>

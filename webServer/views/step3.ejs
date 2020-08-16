@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<body>
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/design-system/2.12.1/styles/salesforce-lightning-design-system.min.css">
+
+
+    <div class="slds-align_absolute-center">
+        <div slds-m-around_medium style=" padding:0.5rem;margin-top:250px;">
+            <title>Access Token</title>
+            Access Token value is : <br /><%=data%><br />
+            <button class="slds-button slds-button_success" onclick="getRecords()">Get Records(GET Request)</button>
+        </div>
+    </div>
+    </head>
+</body>
+<script>
+    function getRecords() {
+        window.location = 'getRecords';
+    }
+</script>
+
+</html>
