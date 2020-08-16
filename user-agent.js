@@ -2,9 +2,9 @@ const express=require('express');
 const app=express();
 const axios = require('axios');
 var popup = require('window-popup').windowPopup;
-const sfdcURL = 'https://login.salesforce.com/services/oauth2/authorize' ;
-const callbackURL='http://localhost:3002/callbackurl';
-const consumerKey='3MVG9d8..z.hDcPLBHHerB_N8Hes3cC5lUR23OAHJ2VY2OVJxTYif12LpAVeiTPuzazZmvNUn0oJBMS1XfQ.b';
+const sfdcURL ='https://login.salesforce.com/services/oauth2/authorize' ;
+const callbackURL='Add callback Url'//for ex :'http://localhost:3002/callbackurl';
+const consumerKey='Added Client Secret Here Key'// for ex :'3MVG9d8..z.hDcPLBHHerB_N8Hes3cC5lffwvf12LpAVeiTPuzazZmvNUn0oJBMS1XfQ.b';
 
 app.get('/',(req,res)=>{
   res.sendfile('userAgent/index.html');
