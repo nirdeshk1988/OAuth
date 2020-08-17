@@ -7,9 +7,14 @@
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/design-system/2.12.1/styles/salesforce-lightning-design-system.min.css">
 
-
+    <div style="word-wrap:break-word;padding:1rem">
+        <p class="slds-align_absolute-center" style="font-size:25px;"><b>
+            STEP 2:
+            </b>
+        </p>
+    </div>
     <div class="">
-        <div class="slds-m-around_medium;slds-wrap" style="padding:0.5rem;word-wrap: break-word;;margin-top:250px;margin-left:50px;">
+        <div class="slds-m-around_medium;slds-wrap" style="padding:0.5rem;word-wrap: break-word;;margin-top:50px;margin-left:50px;">
             <title>Authorization Token</title>
           <b>  Authorization  Token value is : </b><br /><br/><%=data.oauth_code%><br /><br/>
           <b>  Get Access Token by POST request to this URL :</b> <br /><br/><%=data.accessUrl%><br /><br/>

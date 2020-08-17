@@ -3,6 +3,7 @@ const app = express();
 const axios = require('axios');
 const url = require('url');
 const path = require('path');
+const mongoose =require('mongoose');
 //var popupS = require('popups');
 const sfdcURL = 'https://login.salesforce.com/services/oauth2/authorize';
 const callbackURL = 'http://localhost:3002/callbackurl';
@@ -64,7 +65,7 @@ app.get('/getRecords', (req, res, next) => {
   getSFDCRecords(access_token, res);
 })
 getSFDCRecords = (access_token, res) => {
-  axios.get('https://nikhead-dev-ed.my.salesforce.com/services/data/v48.0/query/?q=SELECT+name+from+Account', {
+  axios.get('https://nikhead-dev-ed.my.salesforce.com/services/data/v48.0/query/?q=SELECT+Id,ShippingCity,ShippingCountry,ShippingState,ShippingPostalCode,name+from+Account+where+ShippingCity!=null', {
     headers: {
       'Authorization': 'Bearer ' + access_token
     }
@@ -74,14 +75,69 @@ getSFDCRecords = (access_token, res) => {
       res.render('step4',{
         data: response.data.records
       }); 
+      //connecting to Database.
+      createDBRecord(response.data.records);
     }).catch(err => {
       console.log(err);
     })
-
-
 }
 
+/* Create Records in mongoDb  */
+createDBRecord=async (records)=>{
+  connectDB();
+  const accountModel=mongoose.model('Account',accountSchema);
+  const filter = { Name: records.Id };
+  //const accounts = await accountModel.findOneAndUpdate(filter, records);
+  const accounts= await accountModel.create(records);
+  console.log('Created records in DB',accounts);
+}
 
+/* MongoDB connection */
+const DBURL='Add MongoDB URL';
+const connectDB= async()=>{
+  try{
+      const conn=await mongoose.connect(DBURL,{
+      useNewUrlParser:true,
+      useUnifiedTopology:true,
+      useFindAndModify:false
+    });
+    console.log(`DB Connected ${conn.connection.host}`);
+  }catch(err){
+    mongoose.connection.close()
+    console.log('err',err);
+  }
+ 
+}
+
+/* Define the Account Schema . It is like defining the object module like fields */
+const accountSchema=new mongoose.Schema({
+  Id:{
+    type:String,
+    required:false
+  },
+  Name:{
+    type:String,
+    required:false
+  },
+  ShippingCity:{
+    type:String,
+    required:false
+  },
+  ShippingCountry:{
+    type:String,
+    required:false
+  },
+  ShippingState:{
+    type:String,
+    required:false
+  },
+  ShippingPostalCode:{
+    type:String,
+    required:false
+  }
+},{ strict: true });
+
+/**********  Ends here *****/
 const port = process.env.PORT || 3002;
 //listen to server
 app.listen(port, () => {

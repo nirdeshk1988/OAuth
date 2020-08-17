@@ -7,7 +7,12 @@
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/design-system/2.12.1/styles/salesforce-lightning-design-system.min.css">
 
-
+    <div style="word-wrap:break-word;padding:1rem">
+      <p class="slds-align_absolute-center" style="font-size:25px;"><b>
+          STEP 4:
+          </b>
+      </p>
+    </div>  
     <div class="slds-align_absolute-center">
         <div slds-m-around_medium style=" padding:0.5rem;margin-top:10px;">
             <title>Salesforce Records.</title>   
@@ -21,7 +26,9 @@
                           <li class="slds-item">
                             <article class="slds-tile slds-tile_board">      
                               <div class="slds-tile__detail">
-                                <p class="slds-text-heading_small"><b>Account Name : </b><%=record.Name %></p>
+                                <p class="slds-text-heading_small"><b>Account Name : </b><%=record.Name %>-
+                                  <%=record.ShippingCity %>
+                                </p>
                               </div>
                             </article>
                           </li>   

@@ -1,22 +1,33 @@
 <html>
 <link rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/design-system/2.12.1/styles/salesforce-lightning-design-system.min.css">
-    <div class="slds-align_absolute-center" style="margin-top:150px;">
-        <p style="font-size:30px;"><u>Welcome to Alpha Order Management System</u></p>
-    </div>
-    <div class="slds-align_absolute-center">
+<div class="slds-align_absolute-center" style="margin-top:100px;">
+    <p style="font-size:30px;"><u>Welcome to Alpha Order Management System</u></p>
+</div>
+<div class="slds-align_absolute-center">
     <div slds-m-around_medium>
         <div class="demo-only " style=" padding:0.5rem;background:#16325c;margin-top:50px;">
             <div class="slds-text-color_inverse" style="font-size: 25px;">Web Server Flow : Demo </div>
         </div>
         <div class="demo-only" style="padding:0.5rem;background:#16325c">
-            <button class="slds-button slds-button_success" onclick="startFlow()">Login to salesforce(Get Latest Records).</button>
+            <button class="slds-button slds-button_success" onclick="startFlow()">Login to salesforce(Get Latest
+                Records).</button>
         </div>
     </div>
 </div>
+<div style="word-wrap:break-word;padding:1rem">
+    <p class="slds-align_absolute-center" style="font-size:25px;"><b>
+        STEP 1:
+        </b>
+    </p>
+    </br>
+    <p>https://login.salesforce.com/services/oauth2/authorize?client_id=3MVG9d8..z.hDcPLBHHerB_N8Hes3cC5lUR23OAHJ2VY2OVJxTYif12LpAVeiTPuzazZmvNUn0oJBMS1XfQ.b&redirect_uri=http://localhost:3002/callbackurl&response_type=code&prompt=login%20consent
+    </p>
+</div>
 <script>
     function startFlow() {
-      window.location='startFlow';
+        window.location = 'startFlow';
     }
-    </script>
+</script>
+
 </html>
