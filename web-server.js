@@ -7,8 +7,8 @@ const mongoose =require('mongoose');
 //var popupS = require('popups');
 const sfdcURL = 'https://login.salesforce.com/services/oauth2/authorize';
 const callbackURL = 'http://localhost:3002/callbackurl';
-const consumerKey = 'Update client Key here'//for ex: '3MVG9d8..z.hDsdvsfgwgwe8Hes3cC5lUR23OAHJ2VY2OVJxTYif12LpAVeiTPuzazZmvNUn0oJBMS1XfQ.b';
-const clientSecret = 'Update Secret Here'//for ex: 'A5FE793Dwfwefwqefwe80B97F5C8874658D2690F08D13ABDC146CE8C0B7267E9A160C8BA';
+const consumerKey = '3MVG9d8..z.hDcPLBHHerB_N8Hes3cC5lUR23OAHJ2VY2OVJxTYif12LpAVeiTPuzazZmvNUn0oJBMS1XfQ.b';
+const clientSecret = 'A5FE793D80B977DFF5C8874658D2690F08D13ABDC146CE8C0B7267E9A160C8BA';
 let baseToeknURl = 'https://login.salesforce.com/services/oauth2/token';
 let webServerUrl = baseToeknURl + '?client_id=' + consumerKey + '&client_secret=' + clientSecret + '&redirect_uri=' + callbackURL + '&grant_type=authorization_code';
 let access_token;
@@ -84,17 +84,12 @@ getSFDCRecords = (access_token, res) => {
 
 /* Create Records in mongoDb  */
 createDBRecord=async (records)=>{
-  connectDB();
-  const accountModel=mongoose.model('Account',accountSchema);
-  const filter = { Name: records.Id };
-  //const accounts = await accountModel.findOneAndUpdate(filter, records);
-  const accounts= await accountModel.create(records);
-  console.log('Created records in DB',accounts);
+  connectDB(records);
 }
 
 /* MongoDB connection */
-const DBURL='Add MongoDB URL';
-const connectDB= async()=>{
+const DBURL='mongodb+srv://nirdeshk1988:sfdc1234@order.fiwta.mongodb.net/CRMDb?retryWrites=true&w=majority';
+const connectDB= async(records)=>{
   try{
       const conn=await mongoose.connect(DBURL,{
       useNewUrlParser:true,
@@ -102,6 +97,11 @@ const connectDB= async()=>{
       useFindAndModify:false
     });
     console.log(`DB Connected ${conn.connection.host}`);
+    const accountModel=mongoose.model('Account',accountSchema);
+    const filter = { Name: records.Id };
+    //const accounts = await accountModel.findOneAndUpdate(filter, records);
+    const accounts= await accountModel.create(records);
+    console.log('Created records in DB',accounts);
   }catch(err){
     mongoose.connection.close()
     console.log('err',err);
