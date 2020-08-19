@@ -88,7 +88,7 @@ createDBRecord=async (records)=>{
 }
 
 /* MongoDB connection */
-const DBURL='mongodb+srv://nirdeshk1988:sfdc1234@order.fiwta.mongodb.net/CRMDb?retryWrites=true&w=majority';
+const DBURL='mongodb+srv://nirdeshk1988:<password>@order.fiwta.mongodb.net/<dbname>?retryWrites=true&w=majority';
 const connectDB= async(records)=>{
   try{
       const conn=await mongoose.connect(DBURL,{
