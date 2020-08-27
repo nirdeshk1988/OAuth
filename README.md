@@ -1,7 +1,7 @@
 # Prerequisite : 
 
 * Install the Nodejs.
-* To store the account data in MongoDB , create a free MongoDB account from below URL
+* To store the data in MongoDB , create a free MongoDB account from below URL
   https://cloud.mongodb.com/
 
 # Setup
