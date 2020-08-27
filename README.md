@@ -18,10 +18,10 @@
 # RUN WEB-Server Flow
 
 * Open the temminal and run the below command.
-   nodemon web-server.js
+   *nodemon web-server.js
    
 # RUN User-Agent Flow
 
 * Open the temminal and run the below command.
-   nodemon user-agent.js
+   *nodemon user-agent.js
    
