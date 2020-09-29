@@ -60,6 +60,7 @@ getAccessTokenFromOAuthCode = (oautCode, res, next) => {
     }); 
   });
 }
+//https://nikhead-dev-ed.my.salesforce.com
 //STEP 4: Getting the records from salesforce. Making a get request and passing the access token .
 app.get('/getRecords', (req, res, next) => {
   getSFDCRecords(access_token, res);
@@ -88,7 +89,7 @@ createDBRecord=async (records)=>{
 }
 
 /* MongoDB connection */
-const DBURL='mongodb+srv://nirdeshk1988:<password>@order.fiwta.mongodb.net/<dbname>?retryWrites=true&w=majority';
+const DBURL='mongodb+srv://nirdeshk1988:sfdc1234@order.fiwta.mongodb.net/CRMDb?retryWrites=true&w=majority';
 const connectDB= async(records)=>{
   try{
       const conn=await mongoose.connect(DBURL,{
