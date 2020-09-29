@@ -1,7 +1,7 @@
 # Prerequisite : 
 
 * Install the Nodejs.
-* To store the account data in MongoDB , create a free MongoDB account from below URL
+* To store the data in MongoDB , create a free MongoDB account from below URL
   https://cloud.mongodb.com/
 
 # Setup
@@ -18,10 +18,10 @@
 # RUN WEB-Server Flow
 
 * Open the temminal and run the below command.
-   nodemon web-server.js
+   * nodemon web-server.js
    
 # RUN User-Agent Flow
 
 * Open the temminal and run the below command.
-   nodemon user-agent.js
+   * nodemon user-agent.js
    
